@@ -23,7 +23,7 @@ public class PlayerLevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        calculateNextLevel(level);
+        calculateLevelXP(level);
         XPSlider.value = 0;
         XPText.text = "0 / " + XPToNextLevel;
         LevelText.text = "" + level;
@@ -36,7 +36,7 @@ public class PlayerLevel : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            XPGained(10);
+            XPGained(50);
         }
 
         float value = Mathf.Clamp01((float)currentXP / XPToNextLevel);
@@ -71,13 +71,13 @@ public class PlayerLevel : MonoBehaviour
         int overflow = currentXP - XPToNextLevel;
         ++level;
         currentXP = overflow;
-        calculateNextLevel(level);
+        calculateLevelXP(level);
         XPText.text = "" + Mathf.Clamp(currentXP, 0, XPToNextLevel) + " / " + XPToNextLevel;
         LevelText.text = "" + level;
         XPSlider.value = 0;
     }
 
-    void calculateNextLevel(int n)
+    void calculateLevelXP(int n)
     {
         XPToNextLevel = Mathf.RoundToInt(Mathf.Sqrt((Mathf.Pow(n, 3) * 8)) + 10);
     }
