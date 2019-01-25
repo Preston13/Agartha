@@ -634,7 +634,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 475181445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f1556f801a3d484280bb4cffd8611aa, type: 3}
+  m_Script: {fileID: 11500000, guid: e5f8a67c4ad12be4ca7c9b82c7c4895f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
@@ -644,8 +644,6 @@ MonoBehaviour:
   XPText: {fileID: 67902909}
   LevelText: {fileID: 357626078}
   XPToNextLevel: 0
-  UIMoveTime: 0
-  moving: 0
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
