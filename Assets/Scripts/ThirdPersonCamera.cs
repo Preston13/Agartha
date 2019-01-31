@@ -42,8 +42,8 @@ public class ThirdPersonCamera : MonoBehaviour
         }
         else
         {
-            currentX = player.transform.position.x;
-            currentY = 22;
+            //currentX = player.transform.position.x;
+            //currentY = 22;
         }
     }
 
