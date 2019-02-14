@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a6763f2e655a2c84f9b6be1bfcaf92c4
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Olympus
+  fontNames:
+  - Olympus
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 4d3d96da68f125444bb40be9a46fd2dd, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
