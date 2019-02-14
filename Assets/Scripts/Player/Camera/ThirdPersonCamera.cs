@@ -33,40 +33,31 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void Update()
     {
-        if (playerRigidbody.IsSleeping())
-        {
-            currentX += Input.GetAxis("Mouse X") * cameraSensitivity;
-            currentY += Input.GetAxis("Mouse Y") * cameraSensitivity;
+        
+        currentX += Input.GetAxis("Mouse X") * cameraSensitivity;
+        currentY += Input.GetAxis("Mouse Y") * cameraSensitivity;
 
-            currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
-        }
-        else
-        {
-            //currentX = player.transform.position.x;
-            //currentY = 22;
-        }
+        currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
+        
     }
-
-    // Update is called once per frame
+    
     void LateUpdate()
     {
         
         
-        //if player isn't moving, be able to move the camera around
-        if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
-        {
-            Vector3 dir = new Vector3(0, 0, -distanceFromPlayer);
-            Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
-            //transform.position = player.transform.position + rotation * dir;
-            transform.position = player.transform.position;
-            transform.position += rotation * dir;
-            transform.LookAt(player.transform);
-        }
-        else
-        {
+        
+        Vector3 dir = new Vector3(0, 0, -distanceFromPlayer);
+        Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
+        transform.position = player.transform.position + rotation * dir;
+        transform.position = player.transform.position;
+        transform.position += rotation * dir;
+        transform.LookAt(player.transform);
+        
+        //else
+        //{
 
             // Calculate the current rotation angles
-            float wantedRotationAngle = player.transform.eulerAngles.y;
+        /*    float wantedRotationAngle = player.transform.eulerAngles.y;
             float wantedHeight = player.transform.position.y + height;
 
             float currentRotationAngle = transform.eulerAngles.y;
@@ -95,7 +86,7 @@ public class ThirdPersonCamera : MonoBehaviour
             lastCamx = this.transform.rotation.y;
 
             lastPos = player.transform;
-        }
+        //} */
         
 
         

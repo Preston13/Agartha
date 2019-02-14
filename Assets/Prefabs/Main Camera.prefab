@@ -96,10 +96,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  distanceFromPlayer: 5
+  distanceFromPlayer: 7
   height: 2
   lookAngle: 0
   cameraSensitivity: 2
   turnSpeed: 3
   heightDamping: 2
   rotationDamping: 3
+  lastCamx: 0
+  lastPos: {fileID: 0}
+  currentX: 0
