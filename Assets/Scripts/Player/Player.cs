@@ -6,42 +6,60 @@ public class Player : MonoBehaviour
 {
     static public Player S;
 
+    public TextAsset[] classFiles;
+
+    //current level of health
+    public int currentHealth;
+    //base health that the max health is calculated from
     public int baseHealth;
-    public double currentHealth;
+    //displayed health on ui
     public int maxHealth;
-    public double healthRegenRate;
-    //tenacity is the resistance to status effects.  A percentage of 0-1 that reduces the time of status effects by that percent
-    public double tenacity;
 
-    public bool guarding = false;
+    //Abilities
+    public Ability QAbility;
+    public Ability WAbility;
 
-    public GuardianAbilities guardianAbilities;
-
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         S = this;
+        anim = GetComponent<Animator>();
+        AbilityManager.S.init(classFiles);
 
         maxHealth = baseHealth;
         currentHealth = maxHealth;
 
-        guardianAbilities = GetComponent<GuardianAbilities>();
-        guardianAbilities.init();
+        //All we need to get an ability is something like "Paladin-25"
+        QAbility = AbilityManager.S.classAbilities["Guardian"][1];
+        QAbility.enabled = true;
+        QAbility.init();
+        
+        WAbility = AbilityManager.S.classAbilities["Guardian"][6];
+        WAbility.enabled = true;
+        WAbility.init();
     }
+
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
-            guardianAbilities.addVigorLevel();
-        if (Input.GetKeyDown(KeyCode.W))
-            guardianAbilities.addResurgenceLevel();
-        if (Input.GetKeyDown(KeyCode.E))
-            guardianAbilities.addTenacityLevel();
-        if (Input.GetKeyDown(KeyCode.Space))
         {
-            this.GetComponent<Animator>().SetBool("Guarding", !guarding);
-            guarding = !guarding;
+            QAbility.enabled = false;
+            QAbility.terminate();
+            QAbility = AbilityManager.S.classAbilities["Guardian"][QAbility.id + 1];
+            QAbility.enabled = true;
+            QAbility.init();
         }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            anim.Play(WAbility.animationName);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Hit");
     }
 }

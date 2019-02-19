@@ -1,0 +1,12 @@
+id;name;cooldown;healing%;damage%;CCDuration;animationName;passive1;passive2;passive3;
+Guardian;
+1;vigor1;0;0;0;0;;2;0;0;
+2;vigor2;0;0;0;0;;3;0;0;
+3;vigor3;0;0;0;0;;4;0;0;
+4;vigor4;0;0;0;0;;5;0;0;
+5;vigor5;0;0;0;0;;7;0;0;
+6;shield_surge1;6.5;0;80;0;ShieldSurge;0;0;0;
+7;shield_surge2;6;0;90;0;ShieldSurge;0;0;0;
+8;shield_surge3;5.5;0;100;0;ShieldSurge;0;0;0;
+9;shield_surge4;5;0;110;0;ShieldSurge;0;0;0;
+10;shield_surge5;4;0;120;0;ShieldSurge;0;0;0;
