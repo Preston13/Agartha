@@ -36,7 +36,7 @@ public class PlayerLevel : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            XPGained(50);
+            XPGained(5);
         }
 
         float value = Mathf.Clamp01((float)currentXP / XPToNextLevel);

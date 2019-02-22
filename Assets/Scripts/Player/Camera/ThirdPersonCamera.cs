@@ -37,7 +37,7 @@ public class ThirdPersonCamera : MonoBehaviour
         if (playerStats.status != PlayerStats.PlayerStatus.talking)
         {
             currentX += Input.GetAxis("Mouse X") * cameraSensitivity;
-            currentY += Input.GetAxis("Mouse Y") * cameraSensitivity;
+            currentY += Input.GetAxis("Mouse Y") * cameraSensitivity * -1;
         }
         currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
         Debug.Log(playerStats.status);
