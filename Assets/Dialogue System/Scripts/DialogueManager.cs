@@ -7,10 +7,11 @@ public class DialogueManager : MonoBehaviour {
 
 	public Text nameText;
 	public Text dialogueText;
+    public PlayerStats playerStats;
 
 	public Animator animator;
 
-	private Queue<string> sentences;
+	public Queue<string> sentences;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +32,8 @@ public class DialogueManager : MonoBehaviour {
 		}
 
 		DisplayNextSentence();
+
+       
 	}
 
 	public void DisplayNextSentence ()
@@ -61,4 +64,11 @@ public class DialogueManager : MonoBehaviour {
 		animator.SetBool("IsOpen", false);
 	}
 
+    private void Update()
+    {
+        if(animator.GetBool("IsOpen"))
+        {
+            playerStats.status = PlayerStats.PlayerStatus.talking;
+        }
+    }
 }

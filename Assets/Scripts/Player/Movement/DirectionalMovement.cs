@@ -14,6 +14,7 @@ public class DirectionalMovement : MonoBehaviour
     private Camera cam;
     private CharacterController controller;
     private PlayerStats stats;
+    //private Animator anim;
     
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class DirectionalMovement : MonoBehaviour
         cam = Camera.main;
         controller = GetComponent<CharacterController>();
         stats = GetComponent<PlayerStats>();
+       // anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class DirectionalMovement : MonoBehaviour
             if (controller.velocity.magnitude > 0)
             {
                 stats.status = PlayerStats.PlayerStatus.moving;
+                //anim.Play("HumanoidWalk");
             }
             else
             {

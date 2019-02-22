@@ -6,12 +6,18 @@ public class DialogueTrigger : MonoBehaviour {
 
 	public Dialogue dialogue;
     public bool talkable;
+    public bool talking;
+    public DialogueManager dm;
     public GameObject lb;
+
+    public int sCount;
 
     private void Start()
     {
         talkable = false;
+        talking = false;
         lb = gameObject.transform.GetChild(0).gameObject;
+        sCount = 0;
     }
 
     void OnTriggerEnter(Collider coll)
@@ -28,14 +34,15 @@ public class DialogueTrigger : MonoBehaviour {
         if(coll.gameObject.tag == "Player")
         {
             talkable = false;
+            talking = false;
             lb.SetActive(false);
-            FindObjectOfType<DialogueManager>().EndDialogue();
+            dm.EndDialogue();
         }
     }
 
     public void TriggerDialogue ()
 	{
-		FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+		dm.StartDialogue(dialogue);
 	}
 
 
@@ -43,7 +50,23 @@ public class DialogueTrigger : MonoBehaviour {
     {
         if(talkable && Input.GetKeyDown(KeyCode.E))
         {
-            TriggerDialogue();
+            if(!talking)
+            {
+                sCount = 0;
+                TriggerDialogue();
+                talking = true;
+            }
+            else
+            {
+                dm.DisplayNextSentence();
+                sCount++;
+                if(sCount >= dialogue.sentences.Length)
+                {
+                    dm.EndDialogue();
+                    talking = false;
+                }
+            }
+            
         }
     }
 }
