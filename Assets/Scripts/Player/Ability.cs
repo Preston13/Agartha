@@ -13,7 +13,8 @@ public abstract class Ability
     public int id;
     public string name;
     public Type type;
-    public double cooldown;
+    public float cooldown;
+    public int range;
     public int healing;
     public int damage;
     public double CCDuration;
@@ -23,6 +24,7 @@ public abstract class Ability
     public int passive3;
 
     public bool enabled;
+    public float timeStart = 0;
 
     public abstract void init();
     public abstract void terminate();

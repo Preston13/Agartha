@@ -14,7 +14,9 @@ public class BasicSword : MonoBehaviour
     {
         if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == Player.S.QAbility.animationName)
             Debug.Log("Do " + Player.S.QAbility.damage + " damage.");
-        else if(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == Player.S.WAbility.animationName)
+        else if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == Player.S.WAbility.animationName)
+        {
             Debug.Log("Do " + Player.S.WAbility.damage + " damage.");
+        }
     }
 }

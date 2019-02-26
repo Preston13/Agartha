@@ -8,14 +8,15 @@ public class GuardianAbility : Ability
     {
         id = int.Parse(data[0]);
         name = data[1];
-        cooldown = double.Parse(data[2]);
-        healing = int.Parse(data[3]);
-        damage = int.Parse(data[4]);
-        CCDuration = double.Parse(data[5]);
-        animationName = data[6];
-        passive1 = int.Parse(data[7]);
-        passive2 = int.Parse(data[8]);
-        passive3 = int.Parse(data[9]);
+        cooldown = float.Parse(data[2]);
+        range = int.Parse(data[3]);
+        healing = int.Parse(data[4]);
+        damage = int.Parse(data[5]);
+        CCDuration = double.Parse(data[6]);
+        animationName = data[7];
+        passive1 = int.Parse(data[8]);
+        passive2 = int.Parse(data[9]);
+        passive3 = int.Parse(data[10]);
         //get from player prefs?
         enabled = false;
         init();
@@ -56,5 +57,6 @@ public class GuardianAbility : Ability
         {
             Debug.Log("Removing passive 3!");
         }
+        enabled = false;
     }
 }
