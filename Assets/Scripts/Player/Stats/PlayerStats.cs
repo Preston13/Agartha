@@ -13,11 +13,12 @@ public class PlayerStats : MonoBehaviour
     public int level;
     public ThirdPersonCamera cam;
 
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -26,17 +27,16 @@ public class PlayerStats : MonoBehaviour
         switch (status)
         {
             case PlayerStatus.idle:
-                Debug.Log("Player is idle.");
                 cam.enabled = true;
                 break;
 
             case PlayerStatus.moving:
-                Debug.Log("Player is moving");
                 cam.enabled = true;
+                
+                Debug.Log(anim.gameObject.name);
                 break;
 
             case PlayerStatus.talking:
-                Debug.Log("Player is talking");
                 cam.enabled = false;
                 break;
         }
