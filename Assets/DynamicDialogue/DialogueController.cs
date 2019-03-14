@@ -118,7 +118,11 @@ public class DialogueController : MonoBehaviour
     {
         if (animator.GetBool("IsOpen"))
         {
-            playerStats.status = PlayerStats.PlayerStatus.talking;
+            Camera.main.GetComponent<ThirdPersonCamera>().enabled = false;
+        }
+        else 
+        {
+            Camera.main.GetComponent<ThirdPersonCamera>().enabled = true;
         }
     }
 }
