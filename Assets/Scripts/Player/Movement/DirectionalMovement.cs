@@ -15,7 +15,7 @@ public class DirectionalMovement : MonoBehaviour
     private CharacterController controller;
     private PlayerStats stats;
     private Animator anim;
-    
+   
 
     // Start is called before the first frame update
     void Start()

@@ -11,7 +11,6 @@ public class PlayerStats : MonoBehaviour
     public float maxHealth = 100f;
     public float curHealth = 100f;
     public int level;
-    public ThirdPersonCamera cam;
 
     private Animator anim;
 
@@ -28,17 +27,14 @@ public class PlayerStats : MonoBehaviour
         switch (status)
         {
             case PlayerStatus.idle:
-                cam.enabled = true;
                 break;
 
             case PlayerStatus.moving:
-                cam.enabled = true;
                 
                 Debug.Log(anim.gameObject.name);
                 break;
 
             case PlayerStatus.talking:
-                cam.enabled = false;
                 break;
         }
     }
