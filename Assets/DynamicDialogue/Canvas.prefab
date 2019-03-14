@@ -868,7 +868,6 @@ MonoBehaviour:
   curNode: 0
   animator: {fileID: 95221096643374080}
   wpc: {fileID: 0}
-  playerStats: {fileID: 0}
 --- !u!1 &1872257724325498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,11 +1233,6 @@ PrefabInstance:
     - target: {fileID: 5384285048899504089, guid: 0c30a10ffdfbed14eb953202c33d8259,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5384285048855150049, guid: 0c30a10ffdfbed14eb953202c33d8259,
-        type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384285049467136488, guid: 0c30a10ffdfbed14eb953202c33d8259,

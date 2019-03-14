@@ -57,5 +57,7 @@ public class DialogueHolder : MonoBehaviour {
                 talking = true;
             }
         }
+
+
     }
 }

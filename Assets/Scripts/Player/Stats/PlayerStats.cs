@@ -6,7 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
     public enum PlayerStatus{ idle, moving, attacking, paralyzed, frozen, talking };
 
-    public PlayerStatus status = PlayerStatus.idle;
+    public PlayerStatus status;
 
     public float maxHealth = 100f;
     public float curHealth = 100f;
@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        status = PlayerStatus.idle; 
         anim = GetComponentInChildren<Animator>();
     }
 

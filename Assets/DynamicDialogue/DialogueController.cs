@@ -26,6 +26,7 @@ public class DialogueController : MonoBehaviour
 
     void Start()
     {
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         dialogue = new DialogueNode[0];
         optionTexts = new Text[4];
         optionTexts[0] = option1Text;

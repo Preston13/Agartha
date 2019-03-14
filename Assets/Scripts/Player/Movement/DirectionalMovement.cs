@@ -14,7 +14,7 @@ public class DirectionalMovement : MonoBehaviour
     private Camera cam;
     private CharacterController controller;
     private PlayerStats stats;
-    //private Animator anim;
+    private Animator anim;
     
 
     // Start is called before the first frame update
@@ -23,7 +23,8 @@ public class DirectionalMovement : MonoBehaviour
         cam = Camera.main;
         controller = GetComponent<CharacterController>();
         stats = GetComponent<PlayerStats>();
-       // anim = GetComponentInChildren<Animator>();
+        anim = GetComponentInChildren<Animator>();
+        anim.speed = .75f;
     }
 
     // Update is called once per frame
@@ -41,14 +42,13 @@ public class DirectionalMovement : MonoBehaviour
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                movement *= 2;
+                movement *= 1.5f;
             }
             
 
             if (controller.velocity.magnitude > 0)
             {
                 stats.status = PlayerStats.PlayerStatus.moving;
-                //anim.Play("HumanoidWalk");
             }
             else
             {
@@ -65,7 +65,16 @@ public class DirectionalMovement : MonoBehaviour
            // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotateSpeed * Time.deltaTime);
         }
 
+        //Needs Fix
+        //anim.SetFloat("Turn", Mathf.Atan2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")), 0.1f, Time.deltaTime);
+
+        anim.SetFloat("Forward", Input.GetAxis("Vertical"), 0.1f, Time.deltaTime);
+        anim.gameObject.transform.localPosition = new Vector3(0f, -1.05f, 0f);
+
         
         
+
+         
+       
     }
 }
