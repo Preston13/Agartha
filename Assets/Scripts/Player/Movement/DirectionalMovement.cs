@@ -9,6 +9,7 @@ public class DirectionalMovement : MonoBehaviour
     public float jumpSpeed;
     public float rotateSpeed;
     public float gravity = 20.0f;
+    public Transform body;
 
     private Vector3 movement = Vector3.zero;
     private Camera cam;
@@ -44,7 +45,7 @@ public class DirectionalMovement : MonoBehaviour
             {
                 movement *= 1.5f;
             }
-            
+         
 
             if (controller.velocity.magnitude > 0)
             {
@@ -68,7 +69,10 @@ public class DirectionalMovement : MonoBehaviour
         //Needs Fix
         //anim.SetFloat("Turn", Mathf.Atan2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")), 0.1f, Time.deltaTime);
 
+        body.rotation = new Quaternion(0, 0, 0, 0);
+
         anim.SetFloat("Forward", Input.GetAxis("Vertical"), 0.1f, Time.deltaTime);
+        anim.SetFloat("Turn", Input.GetAxis("Mouse X")/12, 0.1f, Time.deltaTime);
         anim.gameObject.transform.localPosition = new Vector3(0f, -1.05f, 0f);
 
         

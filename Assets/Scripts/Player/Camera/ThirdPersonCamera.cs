@@ -28,7 +28,7 @@ public class ThirdPersonCamera : MonoBehaviour
     void Start()
     {
         Camera cam = Camera.main;
-
+        playerStats = player.GetComponent<PlayerStats>();
         playerRigidbody = player.GetComponent<Rigidbody>();
     }
 
