@@ -1626,7 +1626,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: -0.3, z: 0}
+  m_Center: {x: 0, y: -0.2, z: 0}
 --- !u!1 &2206339536030717038
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,7 +2392,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2206339536616780294}
   - component: {fileID: 2206339536616780293}
-  - component: {fileID: 2206339536616780292}
   m_Layer: 0
   m_Name: EthanBody
   m_TagString: Untagged
@@ -2531,22 +2530,8 @@ SkinnedMeshRenderer:
   m_RootBone: {fileID: 2206339535069901138}
   m_AABB:
     m_Center: {x: 0.0009998381, y: 0.007603824, z: 0.00028842688}
-    m_Extent: {x: 0.80239844, y: 0.23826995, z: 0.57234734}
+    m_Extent: {x: 0.80239844, y: 0.23826995, z: 0.3}
   m_DirtyAABB: 0
---- !u!64 &2206339536616780292
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2206339536616780295}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300006, guid: b235179bd2a63d1468dd430670338c55, type: 3}
 --- !u!1 &2206339536629250917
 GameObject:
   m_ObjectHideFlags: 0
