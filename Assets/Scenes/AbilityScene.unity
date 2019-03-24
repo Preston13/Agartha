@@ -774,6 +774,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 836284264, guid: 849c861ed0ecbbf419393060806069a6, type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 836284264, guid: 849c861ed0ecbbf419393060806069a6, type: 3}
+      propertyPath: field of view
+      value: 26.991467
+      objectReference: {fileID: 0}
     - target: {fileID: 2065655654, guid: 849c861ed0ecbbf419393060806069a6, type: 3}
       propertyPath: player
       value: 

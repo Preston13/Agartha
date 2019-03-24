@@ -8,13 +8,6 @@ public class PlayerAbilityController : MonoBehaviour
 
     public TextAsset[] classFiles;
 
-    //current level of health
-    public int currentHealth;
-    //base health that the max health is calculated from
-    public int baseHealth;
-    //displayed health on ui
-    public int maxHealth;
-
     //bool for attacking
     public bool attacking = false;
     public Vector3 target;
@@ -32,9 +25,6 @@ public class PlayerAbilityController : MonoBehaviour
         S = this;
         GuardianAnimator = GetComponent<Animator>();
         AbilityManager.S.init(classFiles);
-
-        maxHealth = baseHealth;
-        currentHealth = maxHealth;
 
         //All we need to get an ability is something like "Paladin-25"
         Ability1 = AbilityManager.S.classAbilities["Guardian"][6];

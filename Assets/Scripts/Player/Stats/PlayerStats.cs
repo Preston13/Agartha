@@ -7,11 +7,19 @@ public class PlayerStats : MonoBehaviour
 {
     public enum PlayerStatus{ idle, moving, attacking, paralyzed, frozen, talking };
 
+    static public PlayerStats S;
+
     public PlayerStatus status;
 
     [Header("Player Stats")]
-    public float maxHealth = 100f;
-    public float curHealth = 100f;
+    //displayed health on ui
+    public float maxHealth = 100;
+    //base health that the max health is calculated from
+    public float baseHealth = 100;
+    public float curHealth = 100;
+    public float healthRegenRate; //no idea what to do here
+    public float tenacity = 0;
+
 
     [Header("XP Setup")]
     public int level = 1;
@@ -32,6 +40,8 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        S = this;
+
         status = PlayerStatus.idle;
         //anim = GetComponentInChildren<Animator>();
 

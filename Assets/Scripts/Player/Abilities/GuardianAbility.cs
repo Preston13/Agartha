@@ -33,8 +33,8 @@ public class GuardianAbility : Ability
         {
             if (passive1 != 0)
             {
-                PlayerAbilityController.S.maxHealth += (int)(PlayerAbilityController.S.baseHealth * (double)passive1 / 100);
-                PlayerAbilityController.S.currentHealth += (int)(PlayerAbilityController.S.baseHealth * (double)passive1 / 100);
+                PlayerStats.S.maxHealth += (int)(PlayerStats.S.baseHealth * (double)passive1 / 100);
+                PlayerStats.S.curHealth += (int)(PlayerStats.S.baseHealth * (double)passive1 / 100);
             }
             if (passive2 != 0)
             {
@@ -42,7 +42,7 @@ public class GuardianAbility : Ability
             }
             if (passive3 != 0)
             {
-                Debug.Log("I have passive 3!");
+                PlayerStats.S.tenacity += passive3;
             }
         }
     }
@@ -84,8 +84,8 @@ public class GuardianAbility : Ability
     {
         if (passive1 != 0)
         {
-            PlayerAbilityController.S.currentHealth -= (int)(PlayerAbilityController.S.baseHealth * (double)passive1 / 100);
-            PlayerAbilityController.S.maxHealth -= (int)(PlayerAbilityController.S.baseHealth * (double)passive1 / 100);
+            PlayerStats.S.curHealth -= (int)(PlayerStats.S.baseHealth * (double)passive1 / 100);
+            PlayerStats.S.maxHealth -= (int)(PlayerStats.S.baseHealth * (double)passive1 / 100);
         }
         if (passive2 != 0)
         {
@@ -93,7 +93,7 @@ public class GuardianAbility : Ability
         }
         if (passive3 != 0)
         {
-            Debug.Log("Removing passive 3!");
+            PlayerStats.S.tenacity -= passive3;
         }
         enabled = false;
     }
