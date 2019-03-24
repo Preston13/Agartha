@@ -28,5 +28,5 @@ public abstract class Ability
 
     public abstract void init();
     public abstract void terminate();
-
+    public abstract void trigger();
 }

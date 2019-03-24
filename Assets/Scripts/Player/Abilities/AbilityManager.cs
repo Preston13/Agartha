@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
 {
-
     static public AbilityManager S;
 
     public Dictionary<string, Dictionary<int, Ability>> classAbilities;

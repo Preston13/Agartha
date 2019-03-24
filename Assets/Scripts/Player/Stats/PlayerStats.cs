@@ -27,13 +27,13 @@ public class PlayerStats : MonoBehaviour
 
 
     public ThirdPersonCamera cam;
-    private Animator anim;
+    //private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         status = PlayerStatus.idle;
-        anim = GetComponentInChildren<Animator>();
+        //anim = GetComponentInChildren<Animator>();
 
         calculateLevelXP(level);
         XPSlider.value = 0;
