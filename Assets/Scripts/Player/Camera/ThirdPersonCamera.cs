@@ -17,7 +17,6 @@ public class ThirdPersonCamera : MonoBehaviour
     public float rotationDamping;
     public float lastCamx;
     public Transform lastPos;
-    public PlayerStats playerStats;
 
 
     private Rigidbody playerRigidbody;
@@ -28,13 +27,12 @@ public class ThirdPersonCamera : MonoBehaviour
     void Start()
     {
         Camera cam = Camera.main;
-        playerStats = player.GetComponent<PlayerStats>();
         playerRigidbody = player.GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        if (playerStats.status != PlayerStats.PlayerStatus.talking)
+        if (PlayerStats.S.status != PlayerStats.PlayerStatus.talking)
         {
             currentX += Input.GetAxis("Mouse X") * cameraSensitivity;
             currentY += Input.GetAxis("Mouse Y") * cameraSensitivity * -1;

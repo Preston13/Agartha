@@ -31,7 +31,7 @@ public class PlayerAbilityController : MonoBehaviour
         Ability1.enabled = true;
         Ability1.init();
 
-        Ability2 = AbilityManager.S.classAbilities["Guardian"][11];
+        Ability2 = AbilityManager.S.classAbilities["Guardian"][16];
         Ability2.enabled = true;
         Ability2.init();
     }
@@ -57,7 +57,7 @@ public class PlayerAbilityController : MonoBehaviour
 
         if (attacking)
         {
-            transform.position = Vector3.Lerp(transform.position, target, .075f);
+            transform.position = Vector3.Lerp(transform.position, target, .1f);
             if(Mathf.Abs(target.x-transform.position.x) < 0.1 && Mathf.Abs(target.z-transform.position.z) < .1)
             {
                 attacking = false;
