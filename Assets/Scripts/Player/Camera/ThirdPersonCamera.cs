@@ -40,21 +40,20 @@ public class ThirdPersonCamera : MonoBehaviour
             currentY += Input.GetAxis("Mouse Y") * cameraSensitivity * -1;
         }
         currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
-        Debug.Log(playerStats.status);
     }
-    
+
     void LateUpdate()
     {
-        
-        
-        
+
+
+
         Vector3 dir = new Vector3(0, 0, -distanceFromPlayer);
         Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
         transform.position = player.transform.position + rotation * dir;
         transform.position = player.transform.position;
         transform.position += rotation * dir;
         transform.LookAt(player.transform);
-        
+
         //else
         //{
 
@@ -89,8 +88,8 @@ public class ThirdPersonCamera : MonoBehaviour
 
             lastPos = player.transform;
         //} */
-        
 
-        
+
+
     }
 }

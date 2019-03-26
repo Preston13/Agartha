@@ -7,9 +7,9 @@ public class EnemyStats : MonoBehaviour
     public enum Status { attacking, hit, frozen, stunned};
     public float maxHealth;
 
-    private float curHealth;
+    public float curHealth;
 
-
+   
     // Start is called before the first frame update
     void Start()
     {

@@ -6,6 +6,7 @@ public class Attack : MonoBehaviour
 {
     //This is for testing attacks
     public EnemyStats enemy;
+    public Animator swordAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class Attack : MonoBehaviour
 
     public void DoDamage()
     {
-        enemy.TakeDamage(10);
+        swordAnim.Play("TestSwordAttack");
 
 
     }
