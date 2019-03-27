@@ -6,6 +6,7 @@ public class GuardianAbility : Ability
 {
     public bool moveForward;
     public bool jumpForward;
+    public float blocking;
 
     public GuardianAbility(string[] data)
     {
@@ -22,6 +23,8 @@ public class GuardianAbility : Ability
         passive3 = int.Parse(data[10]);
         moveForward = int.Parse(data[11]) == 1;
         jumpForward = int.Parse(data[12]) == 1;
+        blocking = int.Parse(data[13]); //holds seconds to block
+ 
         //get from player prefs?
         enabled = false;
         init();
@@ -29,6 +32,7 @@ public class GuardianAbility : Ability
 
     public override void init()
     {
+        Debug.Log("I am " + name);
         if (enabled)
         {
             if (passive1 != 0)
@@ -72,6 +76,12 @@ public class GuardianAbility : Ability
             else if (jumpForward)
             {
 
+            }
+            else if (blocking != 0)
+            {
+                PlayerAbilityController.S.blocking = true;
+                PlayerAbilityController.S.blockLifeStart = Time.time;
+                PlayerAbilityController.S.blockLifeTime = blocking;
             }
             else
             {

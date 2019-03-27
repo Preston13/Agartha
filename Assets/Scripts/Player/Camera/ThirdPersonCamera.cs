@@ -19,7 +19,6 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform lastPos;
 
 
-    private Rigidbody playerRigidbody;
     public float currentX;
     private float currentY = 25f;
 
@@ -27,7 +26,6 @@ public class ThirdPersonCamera : MonoBehaviour
     void Start()
     {
         Camera cam = Camera.main;
-        playerRigidbody = player.GetComponent<Rigidbody>();
     }
 
     private void Update()

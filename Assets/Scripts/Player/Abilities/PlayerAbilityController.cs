@@ -10,6 +10,7 @@ public class PlayerAbilityController : MonoBehaviour
 
     //bool for attacking
     public bool attacking = false;
+    public bool blocking = false;
     public Vector3 target;
 
     //Abilities
@@ -18,6 +19,8 @@ public class PlayerAbilityController : MonoBehaviour
     public Ability Ability2;
     public float Ability2Cooldown = 0;
 
+    public float blockLifeStart;
+    public float blockLifeTime;
     public Animator GuardianAnimator;
     // Start is called before the first frame update
     void Start()
@@ -27,11 +30,11 @@ public class PlayerAbilityController : MonoBehaviour
         AbilityManager.S.init(classFiles);
 
         //All we need to get an ability is something like "Paladin-25"
-        Ability1 = AbilityManager.S.classAbilities["Guardian"][6];
+        Ability1 = AbilityManager.S.classAbilities["Guardian"][1];
         Ability1.enabled = true;
         Ability1.init();
 
-        Ability2 = AbilityManager.S.classAbilities["Guardian"][16];
+        Ability2 = AbilityManager.S.classAbilities["Guardian"][21];
         Ability2.enabled = true;
         Ability2.init();
     }
@@ -42,19 +45,28 @@ public class PlayerAbilityController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && Ability1Cooldown <= Time.time)
         {
+            //increment passive ability
             Ability1.terminate();
             Ability1 = AbilityManager.S.classAbilities["Guardian"][Ability1.id + 1];
             Ability1.enabled = true;
             Ability1.init();
-            Ability1Cooldown = Time.time + Ability1.cooldown;
+            //Ability1Cooldown = Time.time + Ability1.cooldown;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2) && Ability2Cooldown <= Time.time)
         {
             //lines to run ability
             Ability2.trigger();
-            Ability2Cooldown = Time.time + Ability2.cooldown;
+            Ability2Cooldown = Time.time + blockLifeTime + Ability2.cooldown;
         }
 
+        if(blocking)
+        {
+            if(Time.time >= blockLifeStart + blockLifeTime)
+            {
+                PlayerStats.S.status = PlayerStats.PlayerStatus.idle;
+                blockLifeStart = 0;
+            }
+        }
         if (attacking)
         {
             transform.position = Vector3.Lerp(transform.position, target, .1f);
@@ -78,6 +90,13 @@ public class PlayerAbilityController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit");
+        if (blocking)
+        {
+            Debug.Log("blocking hit");
+        }
+        else
+        {
+            Debug.Log("Hit");
+        }
     }
 }
