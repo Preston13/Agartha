@@ -21,16 +21,16 @@ public class PlayerAbilityController : MonoBehaviour
 
     public float blockLifeStart;
     public float blockLifeTime;
-    public Animator GuardianAnimator;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         S = this;
-        GuardianAnimator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         AbilityManager.S.init(classFiles);
 
         //All we need to get an ability is something like "Paladin-25"
-        Ability1 = AbilityManager.S.classAbilities["Guardian"][1];
+        Ability1 = AbilityManager.S.classAbilities["Guardian"][16];
         Ability1.enabled = true;
         Ability1.init();
 
@@ -46,11 +46,15 @@ public class PlayerAbilityController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1) && Ability1Cooldown <= Time.time)
         {
             //increment passive ability
-            Ability1.terminate();
-            Ability1 = AbilityManager.S.classAbilities["Guardian"][Ability1.id + 1];
-            Ability1.enabled = true;
-            Ability1.init();
+            //Ability1.terminate();
+            //Ability1 = AbilityManager.S.classAbilities["Guardian"][Ability1.id + 1];
+            //Ability1.enabled = true;
+            //Ability1.init();
             //Ability1Cooldown = Time.time + Ability1.cooldown;
+
+            //run ability attack
+            Ability1.trigger();
+            Ability1Cooldown = Time.time + blockLifeTime + Ability1Cooldown;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2) && Ability2Cooldown <= Time.time)
         {
@@ -77,15 +81,9 @@ public class PlayerAbilityController : MonoBehaviour
         }
     }
 
-    public void playAnimation(Type type, string animName)
+    public void playAnimation(string animName)
     {
-        switch (type)
-        {
-            case Type.Guardian:
-                GuardianAnimator.Play(animName);
-                break;
-            
-        }
+        anim.Play(animName);
     }
 
     private void OnTriggerEnter(Collider other)

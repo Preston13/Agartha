@@ -15,7 +15,7 @@ public class DirectionalMovement : MonoBehaviour
     private Camera cam;
     private CharacterController controller;
     private PlayerStats stats;
-    private Animator anim;
+    //private Animator anim;
     
 
     // Start is called before the first frame update
@@ -24,8 +24,8 @@ public class DirectionalMovement : MonoBehaviour
         cam = Camera.main;
         controller = GetComponent<CharacterController>();
         stats = GetComponent<PlayerStats>();
-        anim = GetComponentInChildren<Animator>();
-        anim.speed = .75f;
+        //anim = GetComponentInChildren<Animator>();
+        //anim.speed = .75f;
     }
 
     // Update is called once per frame
@@ -71,9 +71,9 @@ public class DirectionalMovement : MonoBehaviour
 
         body.rotation = new Quaternion(0, 0, 0, 0);
 
-        anim.SetFloat("Forward", Input.GetAxis("Vertical"), 0.1f, Time.deltaTime);
-        anim.SetFloat("Turn", Input.GetAxis("Mouse X")/12, 0.1f, Time.deltaTime);
-        anim.gameObject.transform.localPosition = new Vector3(0f, -1.05f, 0f);
+        //anim.SetFloat("Forward", Input.GetAxis("Vertical"), 0.1f, Time.deltaTime);
+        //anim.SetFloat("Turn", Input.GetAxis("Mouse X")/12, 0.1f, Time.deltaTime);
+        //anim.gameObject.transform.localPosition = new Vector3(0f, -1.05f, 0f);
 
         
         

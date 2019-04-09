@@ -13,17 +13,17 @@ public class GuardianAbility : Ability
         id = int.Parse(data[0]);
         name = data[1];
         cooldown = float.Parse(data[2]);
-        range = int.Parse(data[3]);
-        healing = int.Parse(data[4]);
-        damage = int.Parse(data[5]);
-        CCDuration = double.Parse(data[6]);
+        range = float.Parse(data[3]);
+        healing = float.Parse(data[4]);
+        damage = float.Parse(data[5]);
+        CCDuration = float.Parse(data[6]);
         animationName = data[7];
-        passive1 = int.Parse(data[8]);
-        passive2 = int.Parse(data[9]);
-        passive3 = int.Parse(data[10]);
+        passive1 = float.Parse(data[8]);
+        passive2 = float.Parse(data[9]);
+        passive3 = float.Parse(data[10]);
         moveForward = int.Parse(data[11]) == 1;
         jumpForward = int.Parse(data[12]) == 1;
-        blocking = int.Parse(data[13]); //holds seconds to block
+        blocking = float.Parse(data[13]); //holds seconds to block
  
         //get from player prefs?
         enabled = false;
@@ -32,17 +32,16 @@ public class GuardianAbility : Ability
 
     public override void init()
     {
-        Debug.Log("I am " + name);
         if (enabled)
         {
             if (passive1 != 0)
             {
-                PlayerStats.S.maxHealth += (int)(PlayerStats.S.baseHealth * (double)passive1 / 100);
-                PlayerStats.S.curHealth += (int)(PlayerStats.S.baseHealth * (double)passive1 / 100);
+                PlayerStats.S.maxHealth += (int)(PlayerStats.S.baseHealth * passive1 / 100);
+                PlayerStats.S.curHealth += (int)(PlayerStats.S.baseHealth * passive1 / 100);
             }
             if (passive2 != 0)
             {
-                Debug.Log("I have passive 2!");
+                PlayerStats.S.healthRegenRate += passive2;
             }
             if (passive3 != 0)
             {
@@ -64,13 +63,12 @@ public class GuardianAbility : Ability
             //if we have an animation then play it
             if(animationName != "")
             {
-                //PlayerAbilityController.S.playAnimation(Type.Guardian, animationName);
+                PlayerAbilityController.S.playAnimation(animationName);
             }
 
             if (moveForward)
             {
                 Vector3 target = (PlayerAbilityController.S.transform.forward * range) + PlayerAbilityController.S.transform.position;
-                Debug.Log(target);
                 PlayerAbilityController.S.target = target;
             }
             else if (jumpForward)
@@ -99,7 +97,7 @@ public class GuardianAbility : Ability
         }
         if (passive2 != 0)
         {
-            Debug.Log("Removing passive 2!");
+            PlayerStats.S.healthRegenRate -= passive2;
         }
         if (passive3 != 0)
         {

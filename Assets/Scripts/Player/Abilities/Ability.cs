@@ -14,14 +14,14 @@ public abstract class Ability
     public string name;
     public Type type;
     public float cooldown;
-    public int range;
-    public int healing;
-    public int damage;
-    public double CCDuration;
+    public float range;
+    public float healing;
+    public float damage;
+    public float CCDuration;
     public string animationName;
-    public int passive1;
-    public int passive2;
-    public int passive3;
+    public float passive1;
+    public float passive2;
+    public float passive3;
 
     public bool enabled;
     public float timeStart = 0;

@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour
     //base health that the max health is calculated from
     public float baseHealth = 100;
     public float curHealth = 100;
-    public float healthRegenRate; //no idea what to do here
+    public float healthRegenRate = 0; //no idea what to do here
     public float tenacity = 0;
 
 
@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
     //private Animator anim;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         S = this;
 

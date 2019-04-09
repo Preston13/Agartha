@@ -30,7 +30,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerStats.S.status != PlayerStats.PlayerStatus.talking)
+        if(PlayerStats.S.status != PlayerStats.PlayerStatus.talking)
         {
             currentX += Input.GetAxis("Mouse X") * cameraSensitivity;
             currentY += Input.GetAxis("Mouse Y") * cameraSensitivity * -1;
