@@ -58,7 +58,6 @@ public class DirectionalMovement : MonoBehaviour
         }
 
         movement.y -= (gravity * Time.deltaTime);
-
         controller.Move(movement * Time.deltaTime);
 
         if (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Horizontal") > 0)

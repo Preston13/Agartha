@@ -54,7 +54,7 @@ public class PlayerAbilityController : MonoBehaviour
 
             //run ability attack
             Ability1.trigger();
-            Ability1Cooldown = Time.time + blockLifeTime + Ability1Cooldown;
+            Ability1Cooldown = Time.time + blockLifeTime + Ability1.cooldown;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2) && Ability2Cooldown <= Time.time)
         {
@@ -69,16 +69,26 @@ public class PlayerAbilityController : MonoBehaviour
             {
                 PlayerStats.S.status = PlayerStats.PlayerStatus.idle;
                 blockLifeStart = 0;
+                blocking = false;
             }
         }
-        if (attacking)
-        {
-            transform.position = Vector3.Lerp(transform.position, target, .1f);
-            if(Mathf.Abs(target.x-transform.position.x) < 0.1 && Mathf.Abs(target.z-transform.position.z) < .1)
-            {
-                attacking = false;
-            }
+    }
+
+    public void MoveForward(float range){
+        StartCoroutine(ApplyForce(range));
+    }
+
+    IEnumerator ApplyForce(float range){
+        Vector3 target = transform.position + (transform.forward * range * 1.5f);
+        var dx = target.x - transform.position.x;
+        var dz = target.z - transform.position.z;
+        while(Mathf.Abs(dx) > .1f && Mathf.Abs(dz) > .1f){
+            transform.position += transform.forward / 2;
+            dx = target.x - transform.position.x;
+            dz = target.z - transform.position.z;
+            yield return new WaitForEndOfFrame();
         }
+        yield return null;
     }
 
     public void playAnimation(string animName)
@@ -88,13 +98,15 @@ public class PlayerAbilityController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (blocking)
-        {
-            Debug.Log("blocking hit");
-        }
-        else
-        {
-            Debug.Log("Hit");
+        if(other.tag != "Player" || other.tag != "Terrain"){
+            if (blocking)
+            {
+                Debug.Log("blocking hit");
+            }
+            else
+            {
+                Debug.Log("Hit");
+            }
         }
     }
 }

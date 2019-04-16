@@ -68,8 +68,9 @@ public class GuardianAbility : Ability
 
             if (moveForward)
             {
-                Vector3 target = (PlayerAbilityController.S.transform.forward * range) + PlayerAbilityController.S.transform.position;
-                PlayerAbilityController.S.target = target;
+
+                //Vector3 target = (PlayerAbilityController.S.transform.forward * range) + PlayerAbilityController.S.transform.position;
+                PlayerAbilityController.S.MoveForward(range);
             }
             else if (jumpForward)
             {
