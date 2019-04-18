@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
+
+    static public PlayerStats S;
+
     public enum PlayerStatus{ idle, moving, attacking, paralyzed, frozen, talking };
 
     public PlayerStatus status;
@@ -12,6 +15,9 @@ public class PlayerStats : MonoBehaviour
     [Header("Player Stats")]
     public float maxHealth = 100f;
     public float curHealth = 100f;
+
+    private Color matColor;
+    private SkinnedMeshRenderer body;
 
 
     [Header("XP Setup")]
@@ -39,6 +45,8 @@ public class PlayerStats : MonoBehaviour
         XPSlider.value = 0;
         XPText.text = "0 / " + XPToNextLevel;
         LevelText.text = "" + level;
+        body = FindObjectOfType<SkinnedMeshRenderer>();
+        matColor = body.material.color;
     }
 
     // Update is called once per frame
@@ -92,6 +100,12 @@ public class PlayerStats : MonoBehaviour
                 XPSlider.value = (1 - u) * XPSlider.value + u * value;
             }
         }
+
+        //For testing death
+        if(curHealth <= 0)
+        {
+            Debug.Log("Ded");
+        }
     }
 
     //FUNCTION TO LEVEL UP PLAYER
@@ -118,5 +132,19 @@ public class PlayerStats : MonoBehaviour
     void calculateLevelXP(int n)
     {
         XPToNextLevel = Mathf.RoundToInt(Mathf.Sqrt((Mathf.Pow(n, 3) * 8)) + 10);
+    }
+
+    //Function for taking damage (name subject to change to takeDamage)
+    public void getRekt(float damage)
+    {
+        curHealth -= damage;
+        body.material.color = new Color(1f, 0f, 0f);
+        Invoke("NormalColorChange", .5f);
+
+    }
+
+    void NormalColorChange()
+    {
+        body.material.color = matColor;
     }
 }

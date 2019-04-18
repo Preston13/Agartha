@@ -65,6 +65,9 @@ MonoBehaviour:
   moveSpeed: 25
   minDistance: 25
   player: {fileID: 0}
+  rangedWeapon: {fileID: 2817236474151847033, guid: 247e86eb97c304b44a540826bb3e58e4,
+    type: 3}
+  timeBetweenAttacks: 3
 --- !u!114 &1136001523712982248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 30
+  curHealth: 0
 --- !u!1 &7176934917718930331
 GameObject:
   m_ObjectHideFlags: 0

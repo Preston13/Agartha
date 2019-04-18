@@ -70,9 +70,13 @@ public class DirectionalMovement : MonoBehaviour
         anim.SetFloat("Forward", Input.GetAxis("Vertical"), 0.1f, Time.deltaTime);
         anim.gameObject.transform.localPosition = new Vector3(0f, -1.05f, 0f);
 
-        
-        
 
+
+        //Testing moving something
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            controller.SimpleMove(transform.forward * 300);
+        }
          
        
     }

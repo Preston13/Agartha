@@ -8,12 +8,19 @@ public class EnemyStats : MonoBehaviour
     public float maxHealth;
 
     public float curHealth;
+    public WorldProgressController wpc;
 
-   
+    private Rigidbody rigid;
+    private MeshRenderer body;
+    private Color matColor;
     // Start is called before the first frame update
     void Start()
     {
+        wpc = FindObjectOfType<WorldProgressController>();
         curHealth = maxHealth;
+        rigid = GetComponent<Rigidbody>();
+        body = GetComponentInChildren<MeshRenderer>();
+        matColor = body.material.color;
     }
 
     // Update is called once per frame
@@ -37,5 +44,26 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         curHealth -= damage;
+        rigid.AddForce(-transform.forward * 300);
+        body.material.color = new Color(1f, 0f, 0f);
+        Invoke("NormalColorChange", .2f);
+       
     }
+
+    void NormalColorChange()
+    {
+
+        body.material.color = matColor;
+    }
+
+    private void OnDestroy()
+    {
+        wpc.EnemySlain();
+
+        if (wpc.enemiesKilled >= 5)
+        {
+            wpc.QuestCompleted();
+        }
+    }
+
 }
