@@ -35,6 +35,7 @@ public class WorldProgressController : MonoBehaviour
     {
         animator.SetBool("IsOpen", true);
         enemiesKilled = 0;
+        enemiesSlain.text = 0.ToString();
     }
 
     public void EnemySlain()

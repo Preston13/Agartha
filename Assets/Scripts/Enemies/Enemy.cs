@@ -24,7 +24,6 @@ public class Enemy : MonoBehaviour
 
     private PlayerStats playerStats;
     private EnemyStats enemyStats;
-    private Vector3 startPosition;
     private Vector3 endPosition;
     private float endX;
     private float endZ;
@@ -36,7 +35,6 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         playerStats = player.GetComponent<PlayerStats>();
         enemyStats = GetComponent<EnemyStats>();
-        startPosition = this.transform.position;
         //InvokeRepeating("findEndPosition", 0, 5);
     }
 
