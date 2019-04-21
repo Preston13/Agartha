@@ -4,22 +4,37 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    //Attacking values
+    
+    public float timeBetweenAttacks = 3f;
+
+    //Movement values
     public float stopDistance = 10f;
     public float minDistance = 30f;
     public float moveSpeed = 5f;
+
     GameObject player;
 
     public bool playerInRange;
+    
+
+
+    //Timer to handle attack frequency
     private float timer;
 
-    private Vector3 startPosition;
+    private PlayerStats playerStats;
+    private EnemyStats enemyStats;
     private Vector3 endPosition;
     private float endX;
     private float endZ;
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = this.transform.position;
+        anim = GetComponent<Animator>();
+        playerStats = player.GetComponent<PlayerStats>();
+        enemyStats = GetComponent<EnemyStats>();
         //InvokeRepeating("findEndPosition", 0, 5);
     }
 
@@ -36,16 +51,40 @@ public class Enemy : MonoBehaviour
         //if player is close enough, move toward them
         if (Vector3.Distance(player.transform.position, this.transform.position) < minDistance && !playerInRange)
         {
-            this.transform.LookAt(player.transform);
+            
+            var lookPos = player.transform.position - this.transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 3);
             Move();
-            this.transform.rotation = Quaternion.Euler(0, transform.rotation.y, 0);
+            
         }
         else if(playerInRange)
         {
-            //Attack or something
+            
+            var lookPos = player.transform.position - this.transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 3);
+            //Attack 
+            if (timer >= timeBetweenAttacks && playerInRange && enemyStats.curHealth > 0)
+            {
+                Attack();
+            }
         }
 
         
+    }
+
+    void Attack()
+    {
+        timer = 0f;
+
+        if (playerStats.curHealth > 0)
+        {
+            anim.Play("Enemy_Attack");
+            
+        }
     }
 
     void Move()
@@ -69,6 +108,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    
 
 
 

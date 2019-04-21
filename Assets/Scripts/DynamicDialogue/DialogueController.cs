@@ -48,6 +48,8 @@ public class DialogueController : MonoBehaviour
         nameText.text = name;
         DisplayNode(startNode);
         curNode = startNode;
+
+        playerStats.status = PlayerStats.PlayerStatus.talking;
     }
 
     public void DisplayNode(int nodeInt)
@@ -118,7 +120,12 @@ public class DialogueController : MonoBehaviour
     {
         if (animator.GetBool("IsOpen"))
         {
+            Camera.main.GetComponent<ThirdPersonCamera>().enabled = false;
             playerStats.status = PlayerStats.PlayerStatus.talking;
+        }
+        else 
+        {
+            Camera.main.GetComponent<ThirdPersonCamera>().enabled = true;
         }
     }
 }
