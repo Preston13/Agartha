@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-    private const float Y_ANGLE_MIN = -10.0f, Y_ANGLE_MAX = 50.0f;
+    private const float Y_ANGLE_MIN = 15.0f, Y_ANGLE_MAX = 50.0f;
 
     [Header("Set in Inspector")]
     public GameObject player;

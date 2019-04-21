@@ -11,7 +11,6 @@ public class PlayerAbilityController : MonoBehaviour
     //bool for attacking
     public bool attacking = false;
     public bool blocking = false;
-    public Vector3 target;
 
     //Abilities
     public Ability Ability1;
@@ -21,7 +20,8 @@ public class PlayerAbilityController : MonoBehaviour
 
     public float blockLifeStart;
     public float blockLifeTime;
-    public Animator anim;
+
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -98,7 +98,7 @@ public class PlayerAbilityController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag != "Player" || other.tag != "Terrain"){
+        if(other.tag == "EnemyWeapon"){
             if (blocking)
             {
                 Debug.Log("blocking hit");

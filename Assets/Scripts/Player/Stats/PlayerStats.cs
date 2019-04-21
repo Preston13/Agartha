@@ -23,7 +23,7 @@ public class PlayerStats : MonoBehaviour
 
 
     private Color matColor;
-    private SkinnedMeshRenderer body;
+    private MeshRenderer body;
 
 
     [Header("XP Setup")]
@@ -38,8 +38,6 @@ public class PlayerStats : MonoBehaviour
     private float UIMoveTime;
     private bool XPMoving = false;
 
-
-    public ThirdPersonCamera cam;
     public Animator swordAnim;
 
 
@@ -55,27 +53,27 @@ public class PlayerStats : MonoBehaviour
         XPSlider.value = 0;
         XPText.text = "0 / " + XPToNextLevel;
         LevelText.text = "" + level;
-        body = FindObjectOfType<SkinnedMeshRenderer>();
+        body = GetComponentInChildren<MeshRenderer>();
         matColor = body.material.color;
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (status)
-        {
-            case PlayerStatus.idle:
-                swordAnim.enabled = true;
-                break;
+        //switch (status)
+        //{
+        //    case PlayerStatus.idle:
+        //        swordAnim.enabled = true;
+        //        break;
 
-            case PlayerStatus.moving:
-                swordAnim.enabled = true;
-                break;
+        //    case PlayerStatus.moving:
+        //        swordAnim.enabled = true;
+        //        break;
 
-            case PlayerStatus.talking:
-                swordAnim.enabled = false;
-                break;
-        }
+        //    case PlayerStatus.talking:
+        //        swordAnim.enabled = false;
+        //        break;
+        //}
 
         //XP BAR MOVING AND ANIMATIONS
         if(status != PlayerStatus.talking){

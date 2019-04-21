@@ -36,6 +36,7 @@ public class EnemyStats : MonoBehaviour
     {
         if(other.tag == "Weapon")
         {
+            Debug.Log("Taking damage from " + other.name);
             //Will pass in whatever damage the weapon does
             TakeDamage(10);
         }
