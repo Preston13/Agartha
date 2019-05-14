@@ -22,6 +22,8 @@ public class PlayerAbilityController : MonoBehaviour
     public float blockLifeTime;
 
     private Animator anim;
+
+    private Vector3 initialPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +77,8 @@ public class PlayerAbilityController : MonoBehaviour
     }
 
     public void MoveForward(float range){
+        initialPos = this.transform.position;
+        Debug.Log("range: " + range);
         StartCoroutine(ApplyForce(range));
     }
 
@@ -83,12 +87,17 @@ public class PlayerAbilityController : MonoBehaviour
         var dx = target.x - transform.position.x;
         var dz = target.z - transform.position.z;
         while(Mathf.Abs(dx) > .1f && Mathf.Abs(dz) > .1f){
+            if(Vector3.Distance(initialPos, transform.position) > range)
+            {
+                yield break;
+            }
             transform.position += transform.forward / 2;
             dx = target.x - transform.position.x;
             dz = target.z - transform.position.z;
             yield return new WaitForEndOfFrame();
         }
         yield return null;
+       
     }
 
     public void playAnimation(string animName)

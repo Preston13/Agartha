@@ -13,8 +13,11 @@ public class DialogueHolder : MonoBehaviour {
     private GameObject lb;
     public DialogueController dc;
 
+    public AudioSource audio;
+
     private void Start()
     {
+        audio = gameObject.GetComponent<AudioSource>();
         startNode = 0;
         talkable = false;
         talking = false;
@@ -39,12 +42,14 @@ public class DialogueHolder : MonoBehaviour {
             talking = false;
             lb.SetActive(false);
             dc.EndDialogue();
+            audio.Stop();
         }
     }
 
     public void TriggerDialogue()
     {
         dc.StartDialogue(name, dialogue, startNode);
+        audio.Play();
     }
 
     public void Update()
